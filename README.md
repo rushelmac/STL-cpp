@@ -1,2 +1,2 @@
 # STL-cpp
-Collection of stl header files implemented.
+Collection of stl header files in cpp.
