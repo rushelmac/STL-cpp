@@ -220,7 +220,3 @@ void vector<T>::clear()
 {
 	delete arr;
 }
-/*int main()
-{
-	vector v;
-}*/
