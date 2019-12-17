@@ -1,12 +1,13 @@
-#include<stdio.h>
+#include<iostream>
 using namespace std;
 
-static int syz,capa;
-template<class T>
+template<typename T>
 class vector
 {
 	T* arr;
+	int syz,capa;
 	public :
+		typedef T* Iterator;
 		vector<T>()
 		{
 			arr=new T;
@@ -15,8 +16,8 @@ class vector
 		{
 			delete arr;
 		}
-		T* begin();
-		T* end();
+		Iterator begin();
+		Iterator end();
 		int size();
 		int capacity();
 		void resize(int);
@@ -36,37 +37,37 @@ class vector
 		void clear();
 		//T* emplace();
 };
-template<class T>
-T* vector<T>::begin()
+template<typename T>
+typename vector<T>::Iterator vector<T>::begin()
 {
 	return arr;
 }
 
-template<class T>
-T* vector<T>::end()
+template<typename T>
+typename vector<T>::Iterator vector<T>::end()
 {
 	return arr+syz;
 }
 
-template<class T>
+template<typename T>
 int vector<T>::size()
 {
 	return syz;
 }
 
-template<class T>
+template<typename T>
 int vector<T>::capacity()
 {
 	return capa;
 }
 
-template<class T>
+template<typename T>
 bool vector<T>::empty()
 {
 	return (syz==0);
 }
 
-template<class T>
+template<typename T>
 void vector<T>::shrink_to_fit()
 {
 	T*  arr2=new T[syz];
@@ -80,7 +81,7 @@ void vector<T>::shrink_to_fit()
 	delete ar;
 }
 
-template<class T>
+template<typename T>
 void vector<T>::resize(int n)
 {
 	static T* arr2,ar;
@@ -94,7 +95,7 @@ void vector<T>::resize(int n)
 	delete ar;
 }
 
-template<class T>
+template<typename T>
 void vector<T>::reserve(int n)
 {
 	if(n<syz)
@@ -109,13 +110,13 @@ void vector<T>::reserve(int n)
 	delete ar;
 }
 
-template<class T>
+template<typename T>
 T* vector<T>::back()
 {
 	return arr+syz;
 }
 
-template<class T>
+template<typename T>
 void vector<T>::assign(int sz,T* vl)
 {
 	if(size<sz)
@@ -139,7 +140,7 @@ void vector<T>::assign(int sz,T* vl)
 
 
 
-template<class T>
+template<typename T>
 void vector<T>::push_back(T val)
 {
 	if(syz==capa)
@@ -164,20 +165,20 @@ void vector<T>::push_back(T val)
 	}
 }
 
-template<class T>
+template<typename T>
 void vector<T>::pop_back()
 {
 	syz--;
 }
 
-template<class T>
+template<typename T>
 T* vector<T>::insert(int pos,T val)
 {
 	arr[pos]=val;
 	return &arr[pos];
 }
 
-template<class T>
+template<typename T>
 T* vector<T>::insert(int pos,int size,T val)
 {
 	for(int i=0,j=pos-1;i<size;i++,j++)
@@ -187,7 +188,7 @@ T* vector<T>::insert(int pos,int size,T val)
 	return &arr[pos];	
 }
 
-template<class T>
+template<typename T>
 void vector<T>::erase(int pos)
 {
 	int i=0,j=0;
@@ -203,7 +204,7 @@ void vector<T>::erase(int pos)
 	}
 }
 
-template<class T>
+template<typename T>
 void vector<T>::swap(T*arr2)
 {
 	T tmp;
@@ -215,8 +216,12 @@ void vector<T>::swap(T*arr2)
 	}
 }
 
-template<class T>
+template<typename T>
 void vector<T>::clear()
 {
 	delete arr;
 }
+/*int main()
+{
+	vector v;
+}*/
