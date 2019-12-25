@@ -117,7 +117,7 @@ class list:public iterator<T>
 	void assign (int,T);
 	int size();
 	void erase(iterator<T>);
-	
+	void insert(iterator<T>,T);
 
 };
 template<typename T>
@@ -316,3 +316,15 @@ int list<T>::empty()
 	else
 		return 0;
 }																						
+template<typename T>
+void list<T>::insert(iterator<T>pos,T val)
+{
+	node<T>*a=new node<T>(val);
+	node<T>*tmp=pos.getnode();
+	node<T>*pre=tmp->getprev();
+	a->setprev(pre);
+	a->setnext(tmp);
+	pre->setnext(a);	
+	tmp->setprev(a);
+	cnt++;
+}	
