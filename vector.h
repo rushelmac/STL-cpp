@@ -1,7 +1,6 @@
 #include<iostream>
 using namespace std;
 
-
 template<typename T>
 class vector
 {
@@ -9,13 +8,8 @@ class vector
 	int syz,capa;
 	public :
 		typedef T* Iterator;
-		vector<T>()
-		{
-			arr=new T;
-		}
-		~vector<T>()
-		{
-			delete arr;
+		vector<T>();
+		~vector<T>(){
 		}
 		Iterator begin();
 		Iterator end();
@@ -37,7 +31,18 @@ class vector
 		void swap(T*);
 		void clear();
 		//T* emplace();
+		T* operator ++();
+		void display();
+		T& operator[](int);
 };
+template<typename T>
+vector<T>::vector()
+{
+	syz=0;
+	capa=0;	
+}
+
+
 template<typename T>
 typename vector<T>::Iterator vector<T>::begin()
 {
@@ -50,7 +55,7 @@ typename vector<T>::Iterator vector<T>::end()
 	return arr+syz;
 }
 
-template<typename T>
+template <typename T>
 int vector<T>::size()
 {
 	return syz;
@@ -146,24 +151,28 @@ void vector<T>::push_back(T val)
 {
 	if(syz==capa)
 	{
-		int i;
-		capa*=2;
-		T* arr2=new T[capa],*ar;
-		for(i=0;i<syz;i++)
-		{	
-			arr2[i]=arr[i];
+		T* arr2;
+		int i=0;
+		if(capa==0)
+		{
+			arr=new T[1];
+			capa=1;
 		}
-		arr2[i]=val;
-		ar=arr;
-		arr=arr2;
-		delete ar;
-		syz++;
+		else
+		{
+			capa=capa*2;
+			arr2=new T[capa];
+			while(i<syz)
+			{
+				arr2[i]=arr[i];
+				i++;
+			}
+			delete arr;
+			arr=arr2;
+		}
 	}
-	else
-	{
-		arr[syz]=val;
-		syz++;
-	}
+	arr[syz]=val;
+	syz++;
 }
 
 template<typename T>
@@ -222,7 +231,19 @@ void vector<T>::clear()
 {
 	delete arr;
 }
-/*int main()
+
+template<typename T>
+void vector<T>::display()
 {
-	vector v;
-}*/
+	for(int i=0;i<syz;i++)
+	{
+		cout<<arr[i]<<" "<<endl;
+	}
+}
+
+template<typename T>
+T& vector<T>::operator [](int i)
+{
+	return arr[i];
+}
+
