@@ -21,14 +21,13 @@ class vector
 		void reserve(int);
 		T* back();
 		T* front();
-		void assign(int,T*);
-		void assign(T*,int);
+		void assign(int,T);
 		void push_back(T);
-		void pop_back();
+		T pop_back();
 		T* insert(int,T);
 		T* insert(int,int,T);
 		void erase(int);
-		void swap(T*);
+		void swap(vector<T>&);
 		void clear();
 		//T* emplace();
 		T* operator ++();
@@ -85,12 +84,13 @@ void vector<T>::shrink_to_fit()
 	ar=arr;
 	arr=arr2;
 	delete ar;
+	capa=syz;
 }
 
 template<typename T>
 void vector<T>::resize(int n)
 {
-	static T* arr2,ar;
+	static T* arr2,*ar;
 	arr2=new T[n];
 	for(int i=0;i<syz;i++)
 	{
@@ -98,43 +98,54 @@ void vector<T>::resize(int n)
 	}
 	ar=arr;
 	arr=arr2;
+	capa=syz;
 	delete ar;
 }
 
 template<typename T>
 void vector<T>::reserve(int n)
 {
-	if(n<syz)
-		return;
-	T* arr2=new T[n],*ar;
-	for(int i=0;i<syz;i++)
+	if(n>syz)
 	{
-		arr2[i]=arr[i];
+		capa=n;
+		T* arr2=new T[n],*ar;
+		for(int i=0;i<syz;i++)
+		{
+			arr2[i]=arr[i];
+		}
+		ar=arr;
+		arr=arr2;
+		delete ar;
 	}
-	ar=arr;
-	arr=arr2;
-	delete ar;
 }
 
 template<typename T>
 T* vector<T>::back()
 {
-	return arr+syz;
+	return &arr[syz-1];
 }
 
 template<typename T>
-void vector<T>::assign(int sz,T* vl)
+T* vector<T>::front()
 {
-	if(size<sz)
+	return arr;
+}
+
+template<typename T>
+void vector<T>::assign(int sz,T vl)
+{
+	if(syz<sz)
 	{
 		T* arr2=new T[sz],*ar;
-		for(int i=0;i<size;i++)
+		for(int i=0;i<syz;i++)
 		{
-			&arr[i]=vl;
+			arr2[i]=vl;
 		}
 		ar=arr;
 		arr=arr2;
 		delete ar;
+		syz=sz;
+		capa=syz;
 	}
 	else
 	{
@@ -176,53 +187,91 @@ void vector<T>::push_back(T val)
 }
 
 template<typename T>
-void vector<T>::pop_back()
+T vector<T>::pop_back()
 {
 	syz--;
+	return arr[syz];
 }
 
 template<typename T>
 T* vector<T>::insert(int pos,T val)
 {
-	arr[pos]=val;
-	return &arr[pos];
+	syz+=1;
+	T* arr2=new T[syz],*ar;
+	for(int i=0,j=0;i<syz;i++,j++)
+	{
+		if(i==pos)
+		{
+			arr2[i]=val;
+			i++;
+		}
+		arr2[i]=arr[j];
+	}		
+	ar=arr;
+	arr=arr2;
+	delete ar;
+	capa=syz;
 }
 
 template<typename T>
 T* vector<T>::insert(int pos,int size,T val)
 {
-	for(int i=0,j=pos-1;i<size;i++,j++)
+	syz+=size;
+	T* arr2=new T[syz],*ar;
+	for(int i=0,j=0;i<syz;i++,j++)
 	{
-		arr[j]=val;	
-	}
-	return &arr[pos];	
+		if(i==pos)
+		{
+			int k=0;
+			while(k<size)
+			{
+				arr2[i]=val;
+				k++;
+				i++;
+			}
+		}
+		arr2[i]=arr[j];
+	}		
+	ar=arr;
+	arr=arr2;
+	delete ar;
+	capa=syz;	
 }
 
 template<typename T>
 void vector<T>::erase(int pos)
 {
-	int i=0,j=0;
-	T* arr2=new T[capa];
-	while(i<syz)
+	if(pos<syz)
 	{
-		if(i!=pos-1)
+		syz-=1;
+		T* arr2=new T[syz],*ar;
+		for(int i=0,j=0;i<syz;i++,j++)
 		{
+			if(i==pos)
+			{
+				j++;
+			}
 			arr2[i]=arr[j];
-			i++;
-		}
-		j++;
+		}		
+		ar=arr;
+		arr=arr2;
+		delete ar;
+		capa=syz;
 	}
 }
 
 template<typename T>
-void vector<T>::swap(T*arr2)
+void vector<T>::swap(vector<T> &arr2)
 {
-	T tmp;
-	for(int i=0;i<syz;i++)
-	{
-		tmp=arr2[i];
-		arr2[i]=arr[i];
-		arr[i]=tmp;
+	if(arr2.size()==syz)
+	{	
+		T tmp;
+		for(int i=0;i<syz;i++)
+		{
+			tmp=arr2[i];
+			arr2[i]=arr[i];
+			arr[i]=tmp;
+		}
 	}
 }
 
@@ -230,15 +279,19 @@ template<typename T>
 void vector<T>::clear()
 {
 	delete arr;
+	syz=0;
+	capa=0;
 }
 
 template<typename T>
 void vector<T>::display()
 {
+	cout<<"\n";
 	for(int i=0;i<syz;i++)
 	{
 		cout<<arr[i]<<" "<<endl;
 	}
+	cout<<"\n";
 }
 
 template<typename T>
