@@ -327,4 +327,17 @@ void list<T>::insert(iterator<T>pos,T val)
 	pre->setnext(a);	
 	tmp->setprev(a);
 	cnt++;
-}	
+}
+//Removes all the elements from the list, which are equal to given element.
+template<typename T>
+void list<T>::remove(T val)
+{
+	node<T>*a=getprev();
+	while(a!=NULL)
+	{
+		if(a->getdata()==val)
+			erase(iterator<T>(a));
+		a=a->next;
+	}
+}
+	 
