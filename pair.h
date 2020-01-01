@@ -36,11 +36,11 @@ struct Pair
 		}
 		bool operator>(const Pair<T1,T2>&k)
 		{
-			return(first>k.first&&second>k.second);
+			return(this->first>k.first&&this->second>k.second);
 		}
 		bool operator<(const Pair<T1,T2>&k)
 		{
-			return(first<k.first&&second<k.second);
+			return(this->first<k.first&&this->second<k.second);
 		}
 		Pair swap(Pair<T1,T2>&pr)
 		{
