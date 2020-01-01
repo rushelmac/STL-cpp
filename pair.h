@@ -55,10 +55,16 @@ struct Pair
 			return *this;
 		}	
 		void swap(Pair<T1,T2>&,Pair<T1,T2>&);
+		Pair<T1,T2> Make_pair(T1 x,T2 y);
 		
 };
 template<typename T1,typename T2>
 void swap(Pair<T1,T2>&pr1,Pair<T1,T2>&pr2)
 {
 	pr1.swap(pr2);
+}
+template<typename T1,typename T2>
+Pair<T1,T2> Make_pair(T1 x,T2 y)
+{
+	return Pair<T1,T2>(x,y);
 }
