@@ -1,9 +1,11 @@
 #include<iostream>
 //sort(first_itr,last_itr)   //checked
-//reverse(first_itr,last_itr)
-//*max_element(first_itr,last_itr)
-//*max_element(first_itr,last_itr)
-//accumulate(*max_element(first_itr,last_itr)
+//reverse(first_itr,last_itr)  //checked
+//*max_element(first_itr,last_itr)  //checked
+//*max_element(first_itr,last_itr)  //checked
+//accumulate(first_iterator, last_iterator, initial value of sum) //checked
+//count(first_iterator, last_iterator,x) //checkeed
+//find(first_iterator, last_iterator, x) //checked
 template<typename T>
 void swap(T *i,T *j)
 {
@@ -47,6 +49,74 @@ void sort(T* first_itr,T* last_itr)
 	T* i=first_itr,*j=last_itr-1;
 	qsort(i,j);
 }
+template<typename T>
+void reverse(T* first_itr,T* last_itr)
+{
+	T* i=first_itr,*j=last_itr-1;
+	for(;i<j;i++,j--)
+	{
+		swap(i,j);
+	}
+}
+template<typename T>
+T* max_element(T* first_itr,T* last_itr)
+{
+	T* i=first_itr,*j=last_itr-1;
+	T* max=i;
+	for(;i<j;i++)
+	{
+		if(*i<*(i+1))
+			max=(i+1);
+	}
+	return max;
+}
+template<typename T>
+T* min_element(T* first_itr,T* last_itr)
+{
+	T* i=first_itr,*j=last_itr-1;
+	T* min=i;
+	for(;i<j;i++)
+	{
+		if(*i>*(i+1))
+			min=(i+1);
+	}
+	return min;
+}
+template<typename T>
+T accumulate(T* first_itr,T* last_itr,T ini_sum)
+{
+	T* i=first_itr,*j=last_itr-1;
+	T sum=ini_sum;
+	for(;i<=j;i++)
+	{
+		sum+=*i;
+	}
+	return sum;
+}	
+template<typename T>	
+int count(T* first_itr,T* last_itr,T x)
+{
+	 T* i=first_itr,*j=last_itr-1;
+	int cnt=0;
+	for(;i<=j;i++)
+	{
+		if(*i==x)
+			cnt++;
+	}
+	return cnt;
+}
+template<typename T>	
+T* find(T* first_itr,T* last_itr,T x)
+{
+	 T* i=first_itr,*j=last_itr-1;
+	for(;i<=j;i++)
+	{
+		if(*i==x)
+			break;
+	}
+	return i;
+}
+
 
 //binary_search()            correct for char data type
 //lower_bound upper_bound    correct for char data types
