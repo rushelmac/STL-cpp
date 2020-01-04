@@ -130,7 +130,7 @@ template <typename T>
 bool binary_search(T* first_itr,T* last_itr,T val)
 {
 	T* arr=first_itr;
-	int r=(last_itr-first_itr)/sizeof(T)-1,l=0;
+	int r=(last_itr-first_itr)-1,l=0;
 	int mid=(r/2);
 	cout<<l<<mid<<r<<endl;
 	while(l<r)
