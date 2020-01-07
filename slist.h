@@ -1,6 +1,5 @@
 #include<iostream>
 #include<cstdlib>
-#include <bits/stdc++.h>
 template<typename T>
 class node
 {
