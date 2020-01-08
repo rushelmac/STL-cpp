@@ -11,6 +11,10 @@ class stack
 		void push(T d);
 		T pop();
 		T topval();
+		bool empty();
+		int size();
+		void insert(int,T);
+		int search(T);
 };
 template<typename T>
 stack<T>::stack()
@@ -37,4 +41,28 @@ T stack<T>::topval()
 	if(top==-1)
 		return;
 	return arr[top];
+}
+
+template<typename T>
+bool empty()
+{
+	return (top==-1);
+}
+
+template<typename T>
+int size()
+{
+	return (top+1);
+}
+template<typename T>
+void insert(int pos,T val)
+{
+	if(pos>top)
+		return;
+	arr.insert((top-pos),val);
+}
+template<typename T>
+int search(T val)
+{
+	arr.search(val);
 }
