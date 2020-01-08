@@ -1,5 +1,5 @@
 #include<iostream>
-#include"nisha_list.h"
+#include"slist.h"
 using namespace std;
 
 template<typename T> 
