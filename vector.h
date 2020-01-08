@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+//add search function
+
 template<typename T>
 class vector
 {
@@ -33,6 +35,7 @@ class vector
 		T* operator ++();
 		void display();
 		T& operator[](int);
+		int search(T);
 };
 template<typename T>
 vector<T>::vector()
@@ -298,5 +301,19 @@ template<typename T>
 T& vector<T>::operator [](int i)
 {
 	return arr[i];
+}
+template<typename T>
+int vector<T>::search(T val)
+{
+	int i;
+	for(i=0;i<syz;i++)
+	{
+		if(arr[i]==val)
+			break;
+	}
+	if(i==syz)
+		return -1;
+	else
+		return i;	
 }
 
