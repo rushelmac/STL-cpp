@@ -98,7 +98,7 @@ class List:public Iterator<T>
 	void assign(Iterator<T>,Iterator<T>);
 	Iterator<T>begin(){return fr;}
 	Iterator<T> end(){return rr->getnext();
-	Iterator<T> rbegin(){return rr;}
+	Iterator<T> rbegin(){return rr->getnext();}
 	Iterator<T> rend(){return fr;}
 	T front();
 	T back();
