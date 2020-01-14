@@ -1,0 +1,18 @@
+About STL : The Standard Template Library (STL) is a set of C++ template classes to provide common programming data structures and functions such as lists, stacks, arrays, etc. It is a library of container classes, algorithms, and iterators. It is a generalized library and so, its components are parameterized. A working knowledge of template classes is a prerequisite for working with STL.
+
+About the project : The project done by team members is mind blowing. 
+
+The Header Files : STL contains 4 types of header files 
+1.Iterators
+2.Containers
+3.Algorithms
+4.Functors
+	In the project, we have covered the first 3.
+
+Containers : 
+1. vector.h :
+	Functions of vector :
+2. stack.h :
+	Functions of vector :
+3. queue.h : 
+	Functions of vector :
