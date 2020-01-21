@@ -109,7 +109,7 @@ class List:public Iterator<T>
 	void remove(T val);
 	void display();
 	void Sort();
-
+	void unique();
 };
 template<typename T>
 void List<T>::push_back(T d)
@@ -362,4 +362,23 @@ void List<T>::Sort()
         temp = temp->getnext(); 
     } 
 } 
+
+template<typename T>
+void List<T>::unique()
+{
+	node<T>*tmp=fr;
+	node<T>*first=tmp;
+	
+	while(first!=NULL)
+	{
+		node<T>*second=first->getnext();
+		while(second!=NULL){
+		if(second->getdata()==first->getdata())
+			erase(Iterator<T>(second));
+		second=second->getnext();
+		}
+		first=first->getnext();
+	}
+}	 
+
 
