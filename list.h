@@ -108,6 +108,7 @@ class List:public Iterator<T>
 	void insert(Iterator<T>,T);
 	void remove(T val);
 	void display();
+	void Sort();
 
 };
 template<typename T>
@@ -340,5 +341,25 @@ void List<T>::remove(T val)
 		a=a->getnext();
 	}
 }
-	 
+template<typename T>
+void List<T>::Sort()
+{
+	node<T>* temp = fr; 
+    while (temp) { 
+        node<T>* min = temp; 
+        node<T>* r = temp->getnext();
+        while (r) { 
+            if (min->getdata() > r->getdata()) 
+                min = r; 
+  
+            r = r->getnext(); 
+        } 
+  
+        // Swap Data 
+        T x = temp->getdata(); 
+        temp->setdata(min->getdata()); 
+        min->setdata(x); 
+        temp = temp->getnext(); 
+    } 
+} 
 
