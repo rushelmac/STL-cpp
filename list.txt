@@ -1,0 +1,33 @@
+List in STL:
+
+Lists are sequence containers that allow non-contiguous memory allocation. As compared to vector, list has slow traversal, but once a position has been found, insertion and deletion are quick.
+
+1)front:
+The list::front() is a built-in function in C++ STL which is used to return a reference to the first element in a list container. Unlike the list::begin() function, this function returns a direct reference to the first element in the list container.Return Value: This function returns a direct reference to the first element in the list container.
+
+2)Back:
+The list::back() function in C++ STL returns a direct reference to the last element in the list container. This function is different from the list::end() function as the end() function returns only the iterator to the last element.
+
+3)Push_front(): 
+The list::push_front() is a built-in function in C++ STL which is used to insert an element at the front of a list container just before the current top element. This function also increases the size of the container by 1.
+
+4)push_back():
+The list:push_back() function in C++ STL is used to add a new element to an existing list container. It takes the element to be added as a parameter and adds it to the list container.
+
+5)pop_front:
+The list::pop_front() is a built-in function in C++ STL which is used to remove an element from the front of a list container. This function thus decreases the size of the container by 1 as it deletes the element from the front of a list.
+
+6)begin():
+function is used to return an iterator pointing to the first element of the list container. It is different from the front() function because the front function returns a reference to the first element of the container but begin() function returns a bidirectional iterator to the first element of the container.(Time complexity=O(1))
+
+7)end():
+ function is used to return an iterator pointing to the last element of the list container. It is different from the back() function because the back() function returns a reference to the last element of the container but end() function returns a bidirectional iterator to the last element of the container. (Time complexity=O(1))
+
+8)The list::insert() is used to insert the elements at any position of list.his function returns an iterator that points to the first of the newly inserted elements.
+
+9)unique:
+list::unique() is an inbulit function in C++ STL which removes all duplicate consecutive elements from the list.
+
+10)sort() function is used to sort the elements of the container by changing their positions.(O(nlogn))
+
+11)The list::erase() is a built-in function in C++ STL which is used to delete elements from a list container.This function returns an iterator pointing to the element in the list container which followed the last element erased from the list container.
