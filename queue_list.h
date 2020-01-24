@@ -1,7 +1,6 @@
 #include<iostream>
-#include"slist.h"
+#include"List.h"
 using namespace std;
-
 //empty size swap emplace
 
 template<typename T> 
@@ -12,10 +11,11 @@ class queue
 	public:
 		queue();
 		void push(T);
-		T pop();
+		void pop();
 		T* front();
 		T* back();
 		bool empty();
+		void display();
 };
 
 template<typename T>
@@ -31,11 +31,17 @@ void queue<T>::push(T d)
 }
 
 template<typename T>
-T queue<T>::pop()
+void queue<T>::pop()
 {
 	if(size!=0)
 	{
 		size--;
-		return li.pop_back();
+		li.pop_front();
 	}	
 }
+template<typename T>
+void queue<T>::display()
+{
+	li.display();
+}
+
