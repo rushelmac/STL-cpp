@@ -11,7 +11,7 @@ class queue
 	public:
 		queue();
 		void push(T);
-		void pop();
+		void get_pop();
 		T* front();
 		T* back();
 		bool empty();
@@ -31,17 +31,19 @@ void queue<T>::push(T d)
 }
 
 template<typename T>
-void queue<T>::pop()
-{
-	if(size!=0)
-	{
-		size--;
-		li.pop_front();
-	}	
-}
-template<typename T>
 void queue<T>::display()
 {
 	li.display();
 }
-
+template<typename T>
+T queue<T>::get_pop()
+{
+	if(size!=0)
+	{
+		size--;
+		T tmp;
+		 tmp=li.front();
+		 li.pop_front();
+		return tmp;
+	}	
+}
