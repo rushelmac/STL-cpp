@@ -2,8 +2,8 @@
 template<typename T>
 class stack
 {
-	int top;
 	vector<T> arr;
+	int top;
 	public:
 		stack();
 		~stack(){
@@ -44,25 +44,25 @@ T stack<T>::topval()
 }
 
 template<typename T>
-bool empty()
+bool stack<T>::empty()
 {
 	return (top==-1);
 }
 
 template<typename T>
-int size()
+int stack<T>::size()
 {
 	return (top+1);
 }
 template<typename T>
-void insert(int pos,T val)
+void stack<T>::insert(int pos,T val)
 {
 	if(pos>top)
 		return;
 	arr.insert((top-pos),val);
 }
 template<typename T>
-int search(T val)
+int stack<T>::search(T val)
 {
 	arr.search(val);
 }
