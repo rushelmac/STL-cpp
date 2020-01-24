@@ -34,7 +34,7 @@ Containers :
 		*int search(T)       : Performs binary search on the vector.[O(log(n))]
 		
 2. stack.h :
-	Functions of vector :
+	Functions of stack :
 		bool empty() : Returns whether the stack is empty – Time Complexity : O(1)
 		int size() : Returns the size of the stack – Time Complexity : O(1)
 		T topval() : Returns a reference to the top most element of the stack – Time Complexity : O(1)
@@ -43,7 +43,7 @@ Containers :
 		*void insert(int, T) : This function inserts an element at certain position from the top.(Overriding the general ADT of stack)
 		*int search(T) : Performs binary search on stack. 
 3. queue.h : 
-	Functions of vector :
+	Functions of queue :
 		empty() : Returns whether the queue is empty.[O(1)]
 		size()  : Returns the size of the queue.
 		swap()  : Exchange the contents of two queues but the queues must be of same type, although sizes may differ.[O(n)]
