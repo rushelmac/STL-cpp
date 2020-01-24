@@ -31,3 +31,15 @@ list::unique() is an inbulit function in C++ STL which removes all duplicate con
 10)sort() function is used to sort the elements of the container by changing their positions.(O(nlogn))
 
 11)The list::erase() is a built-in function in C++ STL which is used to delete elements from a list container.This function returns an iterator pointing to the element in the list container which followed the last element erased from the list container.
+
+12)merge():
+list merge() function in C++ STL– Merges two sorted lists into one.
+
+13)display():
+displays the content of the list.
+
+14)remove() –
+Removes all the elements from the list, which are equal to given element.
+
+15)assign() –
+Assigns new elements to list by replacing current elements and resizes the list.
