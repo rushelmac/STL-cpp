@@ -394,15 +394,16 @@ template<typename T>
 void List<T>::merge(List<T>& x)
 {
 	node<T>*a=fr;
-	Sort();
+	//Sort();
 	//node<T>*tmp=a;
 	node<T>*b=x.fr;
-	Sort();
+	
 	node<T>*c=rr;
 	//node<T>*tmp2=getnext();
 	
 	c->setnext(b);
 	b->setprev(c);
+	Sort();
 }
 /*template<typename T>
 void List<T>::swap(List<T>& x)
