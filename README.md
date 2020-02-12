@@ -18,6 +18,7 @@ Collection of stl header files in cpp.
 ## Containers : 
 1. vector.h :
 	Functions of vector :
+		
 		1)T* begin() : 
 		This functions returns a pointer to the begining of array.[O(1)]
 		
@@ -80,6 +81,7 @@ Collection of stl header files in cpp.
 		
 2. stack.h :
 	Functions of stack :
+		
 		1)bool empty() : 
 		Returns whether the stack is empty – Time Complexity : O(1)
 		
@@ -103,6 +105,7 @@ Collection of stl header files in cpp.
 
 3. queue.h : 
 	Functions of queue :
+		
 		1)empty() : 
 		Returns whether the queue is empty.[O(1)]
 		
