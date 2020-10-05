@@ -9,10 +9,10 @@ General Template Library.Collection of selected stl header files in cpp with mod
 
 ## The Header Files : 
     STL contains 4 types of header files 
-1.Iterators
-2.Containers
-3.Algorithms
-4.Functors
+1. Iterators <br />
+2. Containers <br />
+3. Algorithms <br />
+4. Functors <br />
 	In the project, we have covered the first 3.
 
 ## Containers : 
