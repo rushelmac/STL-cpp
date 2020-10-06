@@ -1,5 +1,5 @@
 # STL-cpp  (GTL)
-General Template Library.Collection of selected stl header files in cpp with modifiacation.
+General Template Library. Collection of stl header files in cpp.
 
 ## About STL : 
     The Standard Template Library (STL) is a set of C++ template classes to provide common programming data structures and functions such as lists, stacks, arrays, etc. It is a library of container classes, algorithms, and iterators. It is a generalized library and so, its components are parameterized. A working knowledge of template classes is a prerequisite for working with STL.
