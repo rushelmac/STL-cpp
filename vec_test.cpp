@@ -32,13 +32,14 @@ int main()
 	vec.push_back(5);
 	vec.push_back(5);
 	vec.push_back(34);
-	
+	vec.count_sort();
 	vec2.push_back(4);
 	vec2.push_back(5);
 	vec2.push_back(74);
 	vec2.push_back(1);
 	vec2.push_back(0);
-	vec2.push_back(4);	
+	vec2.push_back(4);
+		
 	//vector<int>::Iterator itr;
 	//itr=vec.begin();
 //	cout<<vec.size();
