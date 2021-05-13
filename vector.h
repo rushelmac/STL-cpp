@@ -36,6 +36,7 @@ class vector
 		void display();
 		T& operator[](int);
 		int search(T);
+		void count_sort();
 };
 template<typename T>
 vector<T>::vector()
@@ -296,6 +297,52 @@ void vector<T>::display()
 	}
 	cout<<"\n";
 }
+template<typename T>
+void vector<T>::count_sort()
+{
+	 int max =arr[0];
+	int min =arr[0];
+	 for (int i = 0; i < syz; i++) 
+        {
+			 if(max<arr[i])
+			 {
+			 	max=arr[i];
+			 }
+			 if(min>arr[i])
+			 {
+			 	min=arr[i];
+			 }
+  		
+		  }
+   int n=syz;
+    int range = max - min + 1; 
+	
+    int count[range],output[n];	
+    	for(int i=0;i<range;i++)
+  		{
+  			count[i]=0;
+		}
+			for(int i=0;i<n;i++)
+  		{
+  			output[i]=0;
+		}   
+    
+    for (int i = 0; i < syz; i++) 
+        count[arr[i] - min]++; 
+  
+    for (int i = 1; i < range; i++) 
+        count[i] += count[i - 1]; 
+  
+    for (int i = syz - 1; i >= 0; i--) { 
+        output[count[arr[i] - min] - 1] = arr[i]; 
+        count[arr[i] - min]--; 
+    } 
+  
+    for (int i = 0; i < syz; i++) 
+        arr[i] = output[i]; 
+}
+
+
 
 template<typename T>
 T& vector<T>::operator [](int i)
