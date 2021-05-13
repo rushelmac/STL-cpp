@@ -121,8 +121,8 @@ T* find(T* first_itr,T* last_itr,T x)
 //binary_search()            correct for char data type
 //lower_bound upper_bound    correct for char data types
 //void erase(pos)			 already in vector.h
-//next_permutation(first_itr,last_itr)	Algorithm is correct.  
-//prev_permutation(first_itr,last_itr)	swap function not working
+//next_permutation(first_itr,last_itr)	Algorithm is correct. Testing pending 
+//prev_permutation(first_itr,last_itr)	Algorithm is correct. Testing pending
 //distance(first_itr,last_itr)			correct for char data types 			
 
 //Checked Correct
@@ -223,7 +223,32 @@ bool next_permutation(T* first_itr,T* last_itr)
 	}		
 return false;
 }
-//prev_permutation(first_itr,last_itr)
+
+template <typename T>
+bool prev_permutation(T* first_itr,T* last_itr)
+{
+	T* arr=first_itr;
+	int size=(last_itr-first_itr)/sizeof(T);
+	int r=size-1,l;
+	l=r-1;
+	cout<<size<<endl;
+	while(--size && arr[r]>=arr[l])
+	{
+		r-=1;
+		l-=1;
+	}
+	if(arr[r]<arr[l])
+	{
+		cout<<"Before :"<<arr[l]<<arr[r]<<endl;
+//		swap(arr[r],arr[l]);  Swap function not working.
+		T temp=arr[l];
+		arr[l]=arr[r];
+		arr[r]=temp;
+		cout<<"After :"<<arr[l]<<arr[r]<<endl;
+		return true;		
+	}		
+return false;
+}
 
 template <typename T>
 void distance(T* first_itr,T* last_itr)
