@@ -199,55 +199,55 @@ void swap(T &a, T &b)
 }
 
 template <typename T>
-bool next_permutation(T* first_itr,T* last_itr)
-{
+bool next_permutation(T* first_itr,T* last_itr){
 	T* arr=first_itr;
 	int size=(last_itr-first_itr)/sizeof(T);
-	int r=size-1,l;
-	l=r-1;
+	int r=size-1;
 	cout<<size<<endl;
-	while(--size && arr[r]<=arr[l])
-	{
+
+	// Find largest index i such that arr[i] > arr[i-1]
+	while(--size && arr[r]<=arr[r-1]){
 		r-=1;
-		l-=1;
 	}
-	if(arr[r]>arr[l])
-	{
-		cout<<"Before :"<<arr[l]<<arr[r]<<endl;
-//		swap(arr[r],arr[l]);  Swap function not working.
-		T temp=arr[l];
-		arr[l]=arr[r];
-		arr[r]=temp;
-		cout<<"After :"<<arr[l]<<arr[r]<<endl;
+	if(arr[r]>arr[r-1]){
+		for(int j=size-1; j>r; j--){
+			if(arr[j]>arr[r-1]){
+				swap(arr[j], arr[r-1]);
+				reverse(arr[i], arr[size-1]);
+				break;
+			}
+		}
 		return true;		
-	}		
-return false;
+	}	
+	// The sequence is in descending order. Make it ascending i.e. first permutation.
+	reverse(first_itr, last_itr);
+	return false;
 }
 
 template <typename T>
-bool prev_permutation(T* first_itr,T* last_itr)
-{
+bool prev_permutation(T* first_itr,T* last_itr){
 	T* arr=first_itr;
 	int size=(last_itr-first_itr)/sizeof(T);
-	int r=size-1,l;
-	l=r-1;
+	int r=size-1;
 	cout<<size<<endl;
-	while(--size && arr[r]>=arr[l])
-	{
+
+	// Find largest index i such that arr[i] < arr[i-1]
+	while(r>0 && arr[r]>=arr[r-1]){
 		r-=1;
-		l-=1;
 	}
-	if(arr[r]<arr[l])
-	{
-		cout<<"Before :"<<arr[l]<<arr[r]<<endl;
-//		swap(arr[r],arr[l]);  Swap function not working.
-		T temp=arr[l];
-		arr[l]=arr[r];
-		arr[r]=temp;
-		cout<<"After :"<<arr[l]<<arr[r]<<endl;
+	if(arr[r]<arr[r-1]){	
+		for(int j=size-1; j>r; j--){
+			if(arr[j]<arr[r-1]){
+				swap(arr[j], arr[r-1]);
+				reverse(arr[i], arr[size-1]);
+				break;
+			}
+		}
 		return true;		
-	}		
-return false;
+	}	
+	// The sequence is in ascending order. Make it descending i.e. last permutation.
+	reverse(first_itr, last_itr);
+	return false;
 }
 
 template <typename T>
